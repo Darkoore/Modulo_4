@@ -10,6 +10,11 @@ class MenuFrame(tk.Frame):
 
         tk.Label(self, text="MENÚ PRINCIPAL", font=("Arial", 18)).pack(pady=30)
 
-        tk.Button(self,text="Gestión Clientes",width=25,height=2,command=lambda: controller.show_frame("GestionClientesFrame")).pack(pady=10)
+        tk.Button(self,text="Compras",
+                  width=25,height=2,command=lambda: controller.show_frame("ComprasFrame")).pack(pady=10)
+        
+        tk.Button(self,text="Gestión Clientes",
+                  width=25,height=2,command=lambda: controller.show_frame("GestionClientesFrame")).pack(pady=10)
 
-        tk.Button(self,text="Salir",width=25,height=2,command=controller.root.quit).pack(pady=10)
+        tk.Button(self,text="Salir",
+                  width=25,height=2,command=controller.root.quit).pack(pady=10)
