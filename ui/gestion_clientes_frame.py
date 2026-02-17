@@ -69,11 +69,12 @@ class GestionClientesFrame(tk.Frame):
         nombre = self.entry_nombre.get()
         correo = self.entry_correo.get()
         tipo = self.tipo_cliente.get()
-
+        #Validaciones previo ingreso
+        
         if not rut or not nombre or not correo:
             messagebox.showerror("Error", "Todos los campos son obligatorios")
             return
-
+        
         if self.db.existe_rut(rut):
             messagebox.showerror("Error", "El RUT ya está registrado")
             return
@@ -98,6 +99,14 @@ class GestionClientesFrame(tk.Frame):
             messagebox.showerror("Error", "Dígito verificador no válido")
             return
 
+        if "@" not in correo:
+            messagebox.showerror("Error", "El correo debe contener @")
+            return False
+        
+        if correo.count("@") != 1:
+            messagebox.showerror("Error", "El correo debe contener solo un @")
+            return False
+        
         # Crear cliente según tipo
         if tipo == "Regular":
             cliente = ClienteRegular(rut, nombre, correo)
